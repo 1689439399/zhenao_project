@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<!--
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>${WEB_NAME!WEB_TITLE!} - ${WEB_SUBTITLE!'欢迎使用JPress'}</title>
+<meta name="keywords" content="${META_KEYWORDS!}">
+<meta name="description" content="${META_DESCRIPTION!}">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--[if lte IE 8]><script src="${CTPATH}/assets/js/ie/html5shiv.js"></script><![endif]-->
+<link rel="stylesheet" href="${CTPATH}/assets/css/main.css" />
+<!--[if lte IE 9]><link rel="stylesheet" href="${CTPATH}/assets/css/ie9.css" /><![endif]-->
+<!--[if lte IE 8]><link rel="stylesheet" href="${CTPATH}/assets/css/ie8.css" /><![endif]-->
+</head>
+<body class="single">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+	    <!-- 头部导航菜单 -->
+        <#include "_head.html"/> 
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<article class="post">
+				<header>
+					<div class="title">
+						<h2>
+							<a href="${content.url}">${content.title!}</a>
+						</h2>
+					</div>
+					<div class="meta">
+						<time class="published" datetime="2015-11-01">${content.created?string("yyyy-MM-dd")}</time>
+						<a href="#" class="author"><span class="name">${content.nickname!}</span><img
+							src="${CTPATH}/images/avatar.jpg" alt="" /></a>
+					</div>
+				</header>
+				<span class="image featured"><img
+					src="${content.thumbnailByName('t1')!}" alt="" /></span>
+				<p>${content.text!}</p>
+				<footer>
+					<ul class="stats">
+						<li><a href="#">${content.getTaxonomyAsUrl('category')!'未分类'}</a></li>
+						<li><a href="#" class="icon fa-heart">${content.viewCount!'0'}</a></li>
+						<li><a href="#" class="icon fa-comment">${content.commentCount!'0'}</a></li>
+					</ul>
+				</footer>
+			</article>
+
+		</div>
+
+		<!-- Footer -->
+		<#include "_foot.html"/>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="${CTPATH}/assets/js/jquery.min.js"></script>
+	<script src="${CTPATH}/assets/js/skel.min.js"></script>
+	<script src="${CTPATH}/assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="${CTPATH}/assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="${CTPATH}/assets/js/main.js"></script>
+
+</body>
+</html>

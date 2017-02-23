@@ -1,0 +1,23 @@
+<section>
+	<h2>推荐文章</h2>
+	<div class="mini-posts">
+
+		<!-- Mini Post -->
+		<@jp_contents module="article" count="10" orderby="view_count"
+		hasThumbnail="true"> <#list contents as content>
+		<article class="mini-post">
+			<header>
+				<h3>
+					<a href="${(content.url)!}">${(content.title)!}</a>
+				</h3>
+				<time class="published" datetime="2015-10-20">${content.created?string("yyyy-MM-dd")}</time>
+				<a href="${(content.url)!}" class="author"><img
+					src="${CPATH}${content.avatar!TPATH+'/assets/images/avatar.jpg'}"
+					alt="${content.nickname!}" title="${content.nickname!}" /></a>
+			</header>
+			<a href="${(content.url)!}" class="image"><img
+				src="${(content.thumbnail)!}" alt="" /></a>
+		</article>
+		</#list> </@jp_contents>
+	</div>
+</section>

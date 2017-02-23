@@ -1,0 +1,20 @@
+<section>
+	<h2>热评文章 </h2>
+	<ul class="posts">
+		<@jp_contents module="article" count="3" orderby="comment_count"
+		hasThumbnail="true"> <#list contents as content>
+		<li>
+			<article>
+				<header>
+					<h3>
+						<a href="${(content.url)!}">${(content.title)!}</a>
+					</h3>
+					<time class="published" datetime="2015-10-20">${content.created?string("yyyy-MM-dd")}</time>
+				</header>
+				<a href="${(content.url)!}" class="image"><img
+					src="${content.thumbnailByName('t4')!}" alt="" /></a>
+			</article>
+		</li> </#list> </@jp_contents>
+	</ul>
+
+</section>

@@ -1,0 +1,9 @@
+<!-- Tags -->
+<section>
+	<h2>热门标签</h2>
+	<ul class="actions">
+	<@jp_tags > <#list tags as tag>
+		<li style="margin-top:0.2em;margin-bottom:0.2em"><a href="${tag.url!}" class="button">${tag.title!}</a></li>
+    </#list> </@jp_tags >
+	</ul>
+</section>

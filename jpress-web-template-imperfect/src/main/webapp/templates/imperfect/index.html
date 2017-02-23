@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<!--
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>${WEB_NAME!WEB_TITLE!} - ${WEB_SUBTITLE!'欢迎使用JPress'}</title>
+<meta name="keywords" content="${META_KEYWORDS!}">
+<meta name="description" content="${META_DESCRIPTION!}">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--[if lte IE 8]><script src="${CTPATH}/assets/js/ie/html5shiv.js"></script><![endif]-->
+<link rel="stylesheet" href="${CTPATH}/assets/css/main.css" />
+<!--[if lte IE 9]><link rel="stylesheet" href="${CTPATH}/assets/css/ie9.css" /><![endif]-->
+<!--[if lte IE 8]><link rel="stylesheet" href="${CTPATH}/assets/css/ie8.css" /><![endif]-->
+</head>
+<body>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+        <!-- 头部导航菜单 -->
+        <#include "_head.html"/> 
+        
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<@indexPage module="article"> 
+			<#list page.getList() as content>
+			<article class="post">
+				<header>
+					<div class="title">
+						<h2>
+							<a href="${content.url}">${content.title}</a>
+						</h2>
+					</div>
+					<div class="meta">
+						<time class="published" datetime="2015-11-01">${content.created?string("yyyy-MM-dd")}</time>
+						<a href="#" class="author"><span class="name">${content.nickname!}</span><img
+							src="${CPATH}${content.avatar!TPATH+'/assets/images/avatar.jpg'}" alt="" /></a>
+					</div>
+				</header>
+				<#if content.thumbnail ??>
+				<a href="${content.url}" class="image featured"><img
+					src="${content.thumbnailByName('t1')!}" alt="" /></a>
+			    <#elseif (content.imageCount > 0) >
+			    <a href="${content.url}" class="image featured"><img
+					src="${(content.imageByIndex(0,'t1'))}" alt="" /></a>
+			    </#if>
+				<p>${content.summary}</p>
+				<footer>
+					<ul class="actions">
+						<li><a href="${content.url}" class="button big">查看全文</a></li>
+					</ul>
+					<ul class="stats">
+						<li><a href="#">${content.getTaxonomyAsUrl('category')!'未分类'}</a></li>
+						<li><a href="#" class="icon fa-heart">${content.view_count!'0'}</a></li>
+						<li><a href="#" class="icon fa-comment">${content.comment_count!'0'}</a></li>
+					</ul>
+				</footer>
+			</article>
+          </#list> 
+ 
+			<!-- Pagination -->
+			<ul class="actions pagination">
+				<@pagination>
+				<#list pageItems as pi>
+				<li class="${pi.style!}">
+					<a href="${pi.url!}">${pi.text!}</a>
+				</li>
+				</#list>
+			</@pagination>
+			</ul>
+       </@indexPage>
+		</div>
+
+		<!-- Sidebar -->
+		<section id="sidebar">
+
+			<!-- Intro -->
+			<section id="intro">
+				<a href="#" class="logo"><img src="${CTPATH}/images/logo.jpg"
+					alt="" /></a>
+				<header>
+					<h2>${WEB_NAME!}</h2>
+					<p>
+						${WEB_TITLE!}
+					</p>
+				</header>
+			</section>
+
+			<!-- 推荐文章 -->
+		    <#include "_content_box1.html"/> 
+           
+			<!-- 热评文章 -->
+		    <#include "_content_box2.html"/> 
+             
+             <!-- 热门标签  -->
+             <#include "_tags_box.html"/>
+             
+			<!-- About -->
+			<section class="blurb">
+				<h2>关于我</h2>
+				<p>
+				 <i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;南京<br/>
+				 <i class="fa fa-book" aria-hidden="true">&nbsp;&nbsp;&nbsp;Android高级软件工程师</i><br/>
+				 <i class="fa fa-tags" aria-hidden="true">&nbsp;&nbsp;&nbsp;沉得进去，跳得出来</i><br/>
+				</p>
+				<ul class="actions">
+					<li><a href="${CPATH}/about" class="button">更多</a></li>
+				</ul>
+			</section>
+
+			<!-- Footer -->
+			<#include "_foot.html"/>
+
+		</section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="${CTPATH}/assets/js/jquery.min.js"></script>
+	<script src="${CTPATH}/assets/js/skel.min.js"></script>
+	<script src="${CTPATH}/assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="${CTPATH}/assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="${CTPATH}/assets/js/main.js"></script>
+
+</body>
+</html>

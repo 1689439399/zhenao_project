@@ -1,0 +1,38 @@
+<hr>
+<nav class="am-g am-g-fixed blog-fixed blog-nav">
+<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav">
+      	<li class="am-active">
+      		<a href="${CPATH}/">首页
+      			<#if "/" == REQUEST.requestURI!>
+      			</#if>
+      		</a>
+      	</li>
+      	<@jp.menus>
+        	<#list menus as menu>
+        		  <#if !menu.parentId?? >   <#-- 如果没有父节点 -->
+        		  	 	   <#if menu.childList??>  <#-- 如果有子节点 -->
+	        		  	 	  	 <li class="am-dropdown" data-am-dropdown>
+	        		  	 	  	 	  <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;"> ${menu.title!}<span class="am-icon-caret-down"></span></a>
+	        		  	 	  		   <ul class="am-dropdown-content">
+	        		  	 	  		   		 <#list menu.childList as two>
+	        		  	 	  		   		 	<li><a href="${two.url!}">${two.title!}</a></li>
+	        		  	 	  		   		 </#list>
+	        		  	 	  		   </ul>
+	        		  	 	  	 </li>
+        		  	 	  	 <#else> <#-- 如果没有有子节点 -->
+        		  	 	  	 	 <li class=""><a href="${menu.url!}">${menu.title!}</a></li>
+        		  	 	   </#if>
+        	 	  </#if>
+        	</#list>
+        </@jp.menus>
+    </ul>
+    <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
+      <div class="am-form-group">
+        <input type="text" class="am-form-field am-input-sm" placeholder="搜索">
+      </div>
+    </form>
+  </div>
+</nav>
+<hr>
